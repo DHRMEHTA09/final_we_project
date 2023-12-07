@@ -29,7 +29,7 @@ function ApiTab() {
 
   return (
     <div>
-      Search Movie By Tabs
+      <div style={{marginLeft:"16.5cm"}}>Search Movie By Tabs <br /><br /></div>
       <Tab
         setActiveGenre={setActiveGenre}
         activeGenre={activeGenre}

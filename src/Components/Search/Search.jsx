@@ -37,7 +37,9 @@ const Search = () => {
 
   return (
     <div>
-       Search Movies
+        <div style={{marginLeft:"17cm"}}> Search Movies <br/></div>
+       <div style={{marginLeft:"12.5cm"}}>
+      <br />
       <form className="d-flex" onSubmit={searchMovie} autoComplete="off" >
         <TextField
           type="search"
@@ -54,7 +56,7 @@ const Search = () => {
         </Button>
         <br />
       </form>
-
+      </div>
       {error && <Typography variant="h6" color="error">{error}</Typography>}
       
       <div >

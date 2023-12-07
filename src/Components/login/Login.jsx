@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Box,
   Grid,
@@ -8,61 +8,80 @@ import {
   Button,
   Link,
   Typography,
-} from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import { blue } from "@mui/material/colors";
-import { useForm } from "react-hook-form";
+} from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import { blue } from '@mui/material/colors'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
-const shade = blue[400];
+const shade = blue[400]
 
 const paperStyle = {
-  padding: "20px",
-  height: "70vh",
-  width: "400px",
-  margin: "0px auto",
+  padding: '20px',
+  height: '70vh',
+  width: '400px',
+  margin: '0px auto',
   color: shade,
-  backgroundColor: "whitesmoke",
-};
+  backgroundColor: 'whitesmoke',
+}
 
 const avatarStyle = {
   backgroundColor: shade,
-};
+}
 
 const textFieldStyle = {
-  margin: "10px auto",
-};
+  margin: '10px auto',
+}
 
 const submitBtnStyle = {
-  marginTop: "10px",
-  marginBottom: "20px",
-  color: "white",
+  marginTop: '10px',
+  marginBottom: '20px',
+  color: 'white',
   backgroundColor: shade,
-};
+}
 
 const Login = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const submit = (data) => {
+  } = useForm()
+
+  const submit = async (data) => {
+  try {
     const requestOptions = {
-      method: "POST",
+      method: 'POST',
       crossDomain: true,
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(data),
-      credentials: "omit",
     };
-    fetch("http://localhost:5173/login", requestOptions)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "UserLogin");
-      });
-  };
+
+    const response = await fetch('http://127.0.0.1:5173/login', requestOptions);
+
+    if (!response.ok) {
+      throw new Error(`Login failed with status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+
+    if (responseData.status === 'OK') {
+      
+      navigate('/movie');
+    } else {
+      throw new Error('Login failed');
+    }
+  } catch (error) {
+    console.error('Error during login:', error.message);
+    window.alert("Error during login:",error.message)
+  }
+};
+
   return (
     <Box>
       <Paper elevation={3} style={paperStyle}>
@@ -82,11 +101,11 @@ const Login = () => {
             type="email"
             required
             fullWidth
-            {...register("email", {
-              required: "Email is required.",
+            {...register('email', {
+              required: 'Email is required.',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Please enter a valid email address",
+                message: 'Please enter a valid email address',
               },
             })}
             error={!!errors?.email}
@@ -101,15 +120,15 @@ const Login = () => {
             type="password"
             required
             fullWidth
-            {...register("password", {
-              required: "Password is required.",
+            {...register('password', {
+              required: 'Password is required.',
               minLength: {
                 value: 4,
-                message: "Password should be of atleast 4 characters.",
+                message: 'Password should be of atleast 4 characters.',
               },
               maxLength: {
                 value: 12,
-                message: "Password should not exceed 12 characters.",
+                message: 'Password should not exceed 12 characters.',
               },
             })}
             error={!!errors?.password}
@@ -125,11 +144,11 @@ const Login = () => {
         <Typography variant="body2">
           Don't have an account?
           <Link href="#" color="inherit" underline="hover">
-            {" Sign Up "}
+            {' Sign Up '}
           </Link>
         </Typography>
       </Paper>
     </Box>
-  );
-};
-export default Login;
+  )
+}
+export default Login

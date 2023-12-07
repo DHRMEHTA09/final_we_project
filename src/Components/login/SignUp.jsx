@@ -46,25 +46,22 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const submit = (data) => {
-    const requestOptions = {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(data),
-      credentials: "omit",
-    };
-     fetch("http://localhost:5173/signup", requestOptions)
-       .then((res) => res.json())
-       .then((data) => {
-         console.log(data, "UserSignUp");
-       });
+    } = useForm();
 
+    const submit = async (data) => {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept:"application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data),
+      };
+      fetch("http://127.0.0.1:5173/signup", requestOptions)
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+   
   };
   return (
     <Box>
@@ -75,7 +72,7 @@ const SignUp = () => {
           </Avatar>
           <h3> SIGN UP </h3>
         </Grid>
-        <form  name="SignUpForm"noValidate onSubmit={handleSubmit(submit)}>
+        <form name="SignUpForm" onSubmit={handleSubmit(submit)}>
           <TextField
             style={textFieldStyle}
             name="email"
@@ -134,7 +131,7 @@ const SignUp = () => {
         </form>
 
         <Typography variant="body2">
-          Already have an accoount?
+          Already have an account?
           <Link href="#" color="inherit" underline="hover">
             {" Sign In "}
           </Link>

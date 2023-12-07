@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginContainer from "./LoginContainer";
-import { Dialog, DialogContent, Button, DialogActions } from "@mui/material";
+import { Dialog, DialogContent } from "@mui/material";
 
 const LoginDialog = () => {
    const [open, setOpen] = useState(true);
@@ -22,7 +22,7 @@ const LoginDialog = () => {
           <LoginContainer />
         </DialogContent>
       </Dialog>
-      <DialogActions></DialogActions>
+      
     </>
   );
 };

@@ -22,8 +22,7 @@ function Api() {
   return (
     
       <div>
-        Search Movies By Filter
-        <br />
+        <div style={{marginLeft:"16.5cm"}}>Search Movie By Tabs <br /><br /></div>
         
         <FilterApi popular={movies} setFiltered ={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
       <div className='grid' style={{
