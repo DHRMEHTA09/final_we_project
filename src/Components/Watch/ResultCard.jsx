@@ -54,9 +54,9 @@ export const ResultCard = ({ movie }) => {
       </div>
 
      
-      {movie.release_date && (
+      {/* {movie.release_date && (
         <p>{`Release Date: ${movie.release_date}`}</p>
-      )}
+      )} */}
     </div>
   );
 };

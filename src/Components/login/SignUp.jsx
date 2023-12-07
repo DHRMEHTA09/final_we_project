@@ -48,21 +48,57 @@ const SignUp = () => {
     formState: { errors },
     } = useForm();
 
-    const submit = async (data) => {
-      const requestOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept:"application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(data),
-      };
-      fetch("http://127.0.0.1:5173/signup", requestOptions)
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+  //   const submit = async (data) => {
+  //     const requestOptions = {
+  //       method: "POST",
+  //       headers: {
+  //           "Content-Type": "application/json",
+  //           Accept:"application/json",
+  //         "Access-Control-Allow-Origin": "*",
+  //       },
+  //       body: JSON.stringify(data),
+  //     };
+  //     fetch("http://127.0.0.1:5173/signup", requestOptions)
+  //       .then((res) => res.json())
+  //       .then((data) => console.log(data));
    
-  };
+  // };
+  const submit = async (data) => {
+  try {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(data),
+    };
+
+    const response = await fetch("http://127.0.0.1:5173/signup", requestOptions);
+    const responseData = await response.json();
+
+    if (responseData.error && responseData.error === "User Exists") {
+    window.alert("User already exists. Please use a different email.");
+    } 
+
+    else if (response.ok) {
+      console.log("Signup successful:", responseData);
+      
+      window.alert("Signup successful!");
+    } 
+    else {
+     
+      console.error("Signup failed:", responseData);
+     
+    }
+  } catch (error) {
+    
+    console.error("Error during signup:", error);
+    
+  }
+};
+
   return (
     <Box>
       <Paper elevation={3} style={paperStyle}>

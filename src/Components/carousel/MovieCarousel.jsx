@@ -8,7 +8,7 @@ const MovieCarousel = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    // Fetch movie data from the API and set it to the state
+   
     const fetchMovies = async () => {
       try {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=3cd9733ac22d34508da9e17d4a018daf');

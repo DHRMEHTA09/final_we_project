@@ -56,85 +56,8 @@ export default function Footer() {
           sx={{ ml: 'auto', display: { xs: 'none', md: 'flex' },margin:"10px" }}
         />
       </Box>
-      <Divider sx={{ my: 2 }} />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          alignItems: { md: 'flex-start' },
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 2,
-        }}
-      >
-        
-        <List
-          size="sm"
-          orientation="horizontal"
-          wrap
-          sx={{ flexGrow: 0, '--ListItem-radius': '8px', '--ListItem-gap': '0px' }}
-        
-        >
-          <ListItem nested sx={{ width: { xs: '50%', md: 140 } }}>
-            <ListSubheader sx={{ fontWeight: 'xl' }}>Sitemap</ListSubheader>
-            <List>
-              <ListItem>
-                <ListItemButton>Services</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Movie</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>About</ListItemButton>
-              </ListItem>
-            </List>
-          </ListItem>
-          <ListItem nested sx={{ width: { xs: '50%', md: 180 } }}>
-            <ListSubheader sx={{ fontWeight: 'xl' }}>Products</ListSubheader>
-            <List sx={{ '--ListItemDecorator-size': '32px' }}>
-              <ListItem>
-                <ListItemButton>Joy UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Base UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Material UI</ListItemButton>
-              </ListItem>
-            </List>
-          </ListItem>
-          <ListItem nested sx={{ width: { xs: '50%', md: 180 } }}>
-            <ListSubheader sx={{ fontWeight: 'xl' }}>Products</ListSubheader>
-            <List sx={{ '--ListItemDecorator-size': '32px' }}>
-              <ListItem>
-                <ListItemButton>Joy UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Base UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Material UI</ListItemButton>
-              </ListItem>
-            </List>
-          </ListItem>
-          
-          <ListItem nested sx={{ width: { xs: '50%', md: 180 } }}>
-            <ListSubheader sx={{ fontWeight: 'xl' }}>Products</ListSubheader>
-            <List sx={{ '--ListItemDecorator-size': '32px' }}>
-              <ListItem>
-                <ListItemButton>Joy UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Base UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Material UI</ListItemButton>
-              </ListItem>
-            </List>
-          </ListItem>
-        </List>
-        
-      </Box>
+      
+      
     </Sheet>
   );
 }
